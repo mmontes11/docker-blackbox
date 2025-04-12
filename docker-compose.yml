@@ -1,0 +1,11 @@
+services:
+  pihole:
+    container_name: blackbox_exporter
+    image: quay.io/prometheus/blackbox-exporter:v0.26.0
+    command:
+      - '--config.file=/config/blackbox.yaml'
+    volumes:
+      - './config/:/config/'
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
